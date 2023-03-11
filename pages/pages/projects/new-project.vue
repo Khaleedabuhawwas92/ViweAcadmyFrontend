@@ -160,14 +160,22 @@ export default {
     }
 
     Dropzone.autoDiscover = false;
+    
     if (document.getElementById("dropzone")) {
       const drop = document.getElementById("dropzone");
       // eslint-disable-next-line no-new
       new Dropzone(drop, {
         url: "/file/post",
         addRemoveLinks: true,
+        timeout: 90000, /*milliseconds*/
+        
       });
     }
+   
+    
+    
+
+    
   },
   methods: {
     getChoices(id) {

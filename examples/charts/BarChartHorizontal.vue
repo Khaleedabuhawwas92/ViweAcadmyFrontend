@@ -3,6 +3,7 @@
     :height="height"
     :options="chartOptions"
     :series="series"
+    :xaxis="categories"
   ></apexchart>
 </template>
 <script setup>
@@ -17,7 +18,7 @@ defineProps({
       chart: {
         type: "bar",
       },
-      colors: ["#3A416F"],
+      colors: ["#f0b52b"],
       fill: {
         type: "solid",
       },
@@ -28,10 +29,10 @@ defineProps({
         },
       },
       dataLabels: {
-        enabled: false,
+        enabled: true,
       },
       xaxis: {
-        categories: ["16-20", "21-25", "26-30", "31-36", "36-42", "42+"],
+        categories: ["Microbiology", "Embryology", "Pathology", "Behavioral science", "OBGYN", "Surgery","Immunology","Anatomy & Histology","Surgery"],
       },
     }),
   },

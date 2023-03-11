@@ -5,37 +5,67 @@
   >
     <ul class="navbar-nav">
       <li class="nav-item">
-        <SidenavCollapse
+        <!-- <SidenavCollapse
           collapse-ref="dashboardsExamples"
           nav-text="Dashboards"
           :class="getRoute === 'dashboards' ? 'active' : ''"
-        >
-          <template #icon>
+        > -->
+          <!-- <template #icon>
             <i class="ni ni-shop text-primary text-sm opacity-10"></i>
           </template>
-          <template #list>
+          <template #list> -->
             <ul class="nav ms-4">
-              <SidenavItem
+              <!-- <SidenavItem
                 to="/dashboards/landing"
                 mini-icon="L"
                 text="Landing"
-              />
+              /> -->
               <SidenavItem
                 to="/dashboards/default"
-                mini-icon="D"
-                text="Default"
+                mini-icon="W"
+                text="Welcome"
               />
               <SidenavItem
+                to="/dashboards/courses"
+                mini-icon="C"
+                text="Courses"
+              />
+              <SidenavItem
+                to="/dashboards/previous-test"
+                mini-icon="P"
+                text="Previous Test"
+              />
+              <SidenavItem
+                to="/dashboards/generate-quiz"
+                mini-icon="G"
+                text="Generate Quiz"
+              />
+              <SidenavItem
+                to="/dashboards/overall-performance"
+                mini-icon="O"
+                text="Overall Performance"
+              />
+              <SidenavItem
+                to="/dashboards/flash-card"
+                mini-icon="F"
+                text="Flash Card"
+              />
+              <SidenavItem
+                to="/dashboards/notes"
+                mini-icon="N"
+                text="Note"
+              />
+              <!-- <SidenavItem
                 to="/dashboards/automotive"
                 mini-icon="A"
                 text="Automotive"
-              />
-              <SidenavItem
+              /> -->
+              <!-- <SidenavItem
                 to="/dashboards/smart-home"
                 mini-icon="S"
                 text="Smart Home"
-              />
-              <SidenavCollapseItem
+              /> -->
+              <!-- <SidenavCollapseItem
                 refer="vrExamples"
                 mini-icon="V"
                 text="Virtual Reality"
@@ -52,11 +82,11 @@
                     text="VR Info"
                   />
                 </template>
-              </SidenavCollapseItem>
-              <SidenavItem to="/dashboards/crm" mini-icon="C" text="CRM" />
+              </SidenavCollapseItem> -->
+              <!-- <SidenavItem to="/dashboards/crm" mini-icon="C" text="CRM" /> -->
             </ul>
-          </template>
-        </SidenavCollapse>
+          <!-- </template> -->
+        <!-- </SidenavCollapse> -->
       </li>
       <li class="mt-3 nav-item">
         <h6
@@ -589,7 +619,7 @@
           <template #icon>
             <i class="ni ni-app text-sm" :class="sidenavType"></i>
           </template>
-          <template #list>
+          <template>
             <ul class="nav ms-4">
               <li class="nav-item">
                 <a
@@ -721,7 +751,7 @@
     </ul>
   </div>
   <div class="mt-3 sidenav-footer">
-    <SidenavCard
+    <!-- <SidenavCard
       :card="{
         title: 'Need Help?',
         description: 'Please check our docs',
@@ -740,7 +770,7 @@
           },
         ],
       }"
-    />
+    /> -->
   </div>
 </template>
 <script setup>

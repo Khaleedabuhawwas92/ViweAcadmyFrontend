@@ -1301,6 +1301,7 @@
 import downArrWhite from "@/assets/img/down-arrow-white.svg";
 import downArrBlack from "@/assets/img/down-arrow-dark.svg";
 import bg from "@/assets/img/curved-images/curved8.jpg";
+
 export default {
   name: "Navbar",
   props: {
@@ -1322,6 +1323,7 @@ export default {
       downArrWhite,
       downArrBlack,
       bg,
+     
     };
   },
   computed: {
