@@ -24,13 +24,13 @@
                 </button>
                 <button class="multisteps-form__progress-btn" type="button" title="Subjects"
                   :class="activeStep >= 3 ? activeClass : ''" @click="activeStep = 3">
-                  <span>Subjects</span>
+                  <span>Tiopcs</span>
                 </button>
               </div>
             </div>
           </div>
           <!--form panels-->
-          <div class="row">
+          <div class="row text-start">
             <div class="m-auto col-12 col-lg-8">
               <form class="multisteps-form__form">
                 <div class="p-3 bg-white card multisteps-form__panel border-radius-xl js-active position-relative"
@@ -48,9 +48,8 @@
                     <div class="m-3 row text-start">
                       <div class="form-check">
                         <div class="row text-start">
-                          <div class="mt-3 col-lg-3 col-md-5 ms-auto text-start" v-for="choice in choices"
-                            :key="choice.id">
-                            <input type="radio" :id="choice" @change="onChange($event)" v-model="mChoice" :name="choices"
+                          <div class="mt-3 col-lg-3 col-md-5  text-start" v-for="choice in choices" :key="choice.id">
+                            <input type="radio" :id="choice" @change="onChange($event)" v-model="Courses" :name="choices"
                               :value="choice">
                             <label class="form-check-label" :for="choice">
                               {{ choice }}
@@ -65,11 +64,12 @@
                             </button>
                           </div>
                           <div class="mt-4 button-row d-flex col-12">
-                            <button class="mb-0 btn bg-gradient-dark ms-auto js-btn-next" type="button" title="Next"
-                              @click="inputqusizez()">
-                              inpu the qiazes
-                            </button>
+                            <input value="5" />
+                            <label class="form-check-label">
+                              {{ questionsArray.length }}
+                            </label>
                           </div>
+
                         </div>
                       </div>
                     </div>
@@ -91,8 +91,8 @@
                     </div>
                   </div>
                   <div class="mt-4 row">
-                    <div class="col-sm-3 ms-auto" v-for="subject in subjects" :key="subject.id">
-                      <input :id="subject" type="checkbox" class="btn-check" :value="subject" @change="change1($event)"  v-model="ceh"
+                    <div class="col-sm-3" v-for="subject in subjects" :key="subject.id">
+                      <input :id="subject" type="checkbox" class="btn-check" :value="subject" v-model="Subjects"
                         :name="subject" />
                       <label class="px-6 py-5 border-2 btn btn-lg btn-outline-secondary" :for="subject">
                         <svg class="text-dark" width="20px" height="20px" viewBox="0 0 42 42" version="1.1"
@@ -135,7 +135,7 @@
                 <div class="p-3 bg-white card  border-radius-xl" data-animation="FadeIn" v-if="activeStep === 2">
                   <div class="text-center row">
                     <div class="mx-auto col-10">
-                      <h5 class="font-weight-normal">Are you living in a nice area?</h5>
+                      <h5 class="font-weight-normal">Systems</h5>
                       <p>
                         One thing I love about the later sunsets is the chance to go for a
                         walk through the neighborhood woods before dinner
@@ -144,9 +144,10 @@
                   </div>
                   <div class="multisteps-form__content">
                     <div class="row text-start">
-                      <div class="mt-3 col-lg-3 col-md-5 ms-auto text-start" v-for="system in systems" :key="system.id">
-                        <ArgonSwitch id="flexSwitchCheckDefault" name="email"
-                          label-class="mb-0 text-body ms-3 text-truncate w-80" checked>{{ system }}</ArgonSwitch>
+                      <div class="mt-3 col-lg-3 col-md-5 ms-auto text-start my-auto form-check" v-for="system in systems"
+                        :key="system.id">
+                        <input :id="system.id" class="form-check-input" type="checkbox" :name="system" :value="system"
+                          v-model="Systems" />{{ system }}
                       </div>
                     </div>
                     <div class="row">
@@ -167,7 +168,7 @@
                 <div class="p-3 bg-white card  border-radius-xl" data-animation="FadeIn" v-if="activeStep === 3">
                   <div class="text-center row">
                     <div class="mx-auto col-10">
-                      <h5 class="font-weight-normal">Are you living in a nice area?</h5>
+                      <h5 class="font-weight-normal">Topics</h5>
                       <p>
                         One thing I love about the later sunsets is the chance to go for a
                         walk through the neighborhood woods before dinner
@@ -176,9 +177,10 @@
                   </div>
                   <div class="multisteps-form__content">
                     <div class="row text-start">
-                      <div class="mt-3 col-lg-3 col-md-5 ms-auto text-start" v-for="topic in topics" :key="topic.id">
-                        <ArgonSwitch id="flexSwitchCheckDefault" name="email"
-                          label-class="mb-0 text-body ms-3 text-truncate w-80" checked>{{ topic }} </ArgonSwitch>
+                      <div class="mt-3 col-lg-3 col-md-5  text-start my-auto form-check" v-for="topic in topics"
+                        :key="topic.id">
+                        <input :id="topic.id" class="form-check-input m-2" type="checkbox" :name="topic" :value="topic"
+                          v-model="Topics" />{{ topic }}
                       </div>
                     </div>
                     <div class="row">
@@ -187,9 +189,10 @@
                           @click="activeStep -= 1">
                           Prev
                         </button>
-                        <button class="mb-0 btn bg-gradient-dark ms-auto" type="button" title="Send">
+                        <NuxtLink to="/dashboards/quizeScreen" :company="choices"  class="mb-0 btn bg-gradient-dark ms-auto" type="button"
+                          title="Send">
                           Generate Quiz
-                        </button>
+                        </NuxtLink>
                       </div>
                     </div>
                   </div>
@@ -200,17 +203,18 @@
         </div>
       </div>
     </div>
+    <QuizeScreen v-if="display" :quize="track" />
   </div>
 </template>
-
 <script>
 import About from "~~/pagesComponents/applications/wizard/About.vue";
 import Account from "~~/pagesComponents/applications/wizard/Account.vue";
 import WizardAddress from "~~/pagesComponents/applications/wizard/Address.vue";
+import QuizeScreen from "./quizeScreen.vue";
 import jsonFile from "~/data.json";
 export default {
   name: "generate-quiz",
-  components: { About, Account, WizardAddress },
+  components: { About, Account, WizardAddress, QuizeScreen },
   data() {
     return {
       activeClass: "js-active position-relative",
@@ -220,6 +224,7 @@ export default {
         email: 'test@test.com',
         roles2: [{ id: 1, name: 'Client' }]
       },
+      display: false,
       mChoice: null,
       sel: null,
       subjects: [],
@@ -227,21 +232,56 @@ export default {
       topics: [],
       noOfPersons: 2,
       selected: '',
-      choices: ["Anatomy mid", "Anatomy"],
+      choices: ["Anatomy mid", "Anatomy",],
       questionsArray: [],
       insatrQuastion: [],
-      ceh: [],
+      Subjects: [],
+      Systems: [],
+      Topics: [],
+      Courses: [],
+      filtring: {},
+      track: []
 
 
 
     };
   },
   methods: {
-    change1(e) {dsdada
-      console.log(e.target.value);
-      // this.ceh.push(e.target.value);
-      console.log(this.ceh);
+    getMultipleRandom(arr, num) {
+      const shuffled = [...arr].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, num);
     },
+
+
+    async change1() {
+      if (!this.Subjects.length == 0) {
+        //Return TRUE if the array is empty
+        this.filtring = {
+          subject: { $in: this.Subjects }
+        }
+      }
+      if (!this.Systems.length == 0) {
+        this.filtring.systems = { $in: this.Systems }
+      }
+      if (!this.Topics.length == 0) {
+
+        this.filtring.topic = { $in: this.Topics }
+      }
+      this.filtring.courses = { $in: this.Courses }
+      await $fetch('http://localhost:8000/api/question/findone', {
+        method: 'POST',
+        body: this.filtring
+      }).then(res => {
+        this.track = this.getMultipleRandom(res, 10)
+        this.display = true
+
+
+      })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
     async inputqusizez() {
       jsonFile.forEach(element => {
         let insatrQuastion = {
@@ -280,11 +320,12 @@ export default {
 
     },
     async onChange(e) {
+      console.log(this.Courses);
       this.subjects = [];
       this.systems = [];
       this.topics = [];
       var data = e.target.value;
-      console.log(data);
+
       let val = {
         courses: { $in: [`${data}`] },
       };
@@ -295,11 +336,9 @@ export default {
       }).then(res => {
         console.log(res);
         this.questionsArray = res
-
       })
         .catch((error) => {
           console.log(error);
-
         });
       this.questionsArray.forEach(element => {
         if (!this.subjects.includes(element.subject)) {
@@ -313,7 +352,6 @@ export default {
         }
 
       });
-      console.log(this.arr);
     },
 
     nextStep() {

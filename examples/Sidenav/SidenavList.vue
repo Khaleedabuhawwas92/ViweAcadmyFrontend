@@ -31,6 +31,11 @@
                 text="Courses"
               />
               <SidenavItem
+                to="/dashboards/quizeScreen"
+                mini-icon="Q"
+                text="Quize Screen"
+              />
+              <SidenavItem
                 to="/dashboards/previous-test"
                 mini-icon="P"
                 text="Previous Test"

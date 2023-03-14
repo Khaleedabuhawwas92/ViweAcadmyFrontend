@@ -2,7 +2,9 @@
 export default defineNuxtConfig({
   ssr: false,
   
+  
   app: {
+    
     head: {
       title: 'Nuxt Argon Dashboard 2 PRO',
       meta: [
@@ -46,10 +48,7 @@ export default defineNuxtConfig({
   },
  
  
-  components: {
-    global: true,
-    dirs: ['~/components/icons', '~/components'],
-  },
+  components: true,
   imports: {
     autoImport: true,
   },
