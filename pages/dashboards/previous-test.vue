@@ -579,6 +579,7 @@
   import img4 from "@/assets/img/team-4.jpg";
   import img5 from "@/assets/img/team-5.jpg";
   import img6 from "@/assets/img/ivana-squares.jpg";
+  import { mapGetters } from "vuex";
   
   export default {
     name: "previous-test",
@@ -592,7 +593,13 @@
         img6,
       };
     },
+    computed: {
+      ...mapGetters(["getUserInfo","getMyCourses"]),
+      // a computed getter
+
+   },
     mounted() {
+   
       if (document.getElementById("order-list")) {
         const dataTableSearch = new DataTable("#order-list", {
           searchable: true,

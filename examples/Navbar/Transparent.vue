@@ -1301,6 +1301,7 @@
 import downArrWhite from "@/assets/img/down-arrow-white.svg";
 import downArrBlack from "@/assets/img/down-arrow-dark.svg";
 import bg from "@/assets/img/curved-images/curved8.jpg";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Navbar",
@@ -1327,6 +1328,7 @@ export default {
     };
   },
   computed: {
+   ...mapGetters(["getEmail"]),
     darkModes() {
       return {
         "text-dark": this.darkMode,

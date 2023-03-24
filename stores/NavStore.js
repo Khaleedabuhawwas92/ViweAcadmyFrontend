@@ -11,6 +11,7 @@ export const useNavStore = defineStore("NavStore", {
       sidenavType: 'bg-white',
       navFixed: false,
       darkMode: false,
+      darkMode2:"khaled am her",
     };
   },
 
@@ -32,6 +33,9 @@ export const useNavStore = defineStore("NavStore", {
     },
     toggleNavFixed() {
       this.navFixed = !this.navFixed;
+    },
+    khaled(state) {
+      this.darkMode2 =  state.darkMode2
     },
   },
 });
