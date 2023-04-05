@@ -126,7 +126,7 @@ export default {
             }).then(res => {
                sessionStorage.setItem("info" ,JSON.stringify(res))
                this.$store.dispatch("yourAction", res);
-               console.log(res);
+              
              
                navigateTo('/dashboards/default')
             })

@@ -45,7 +45,7 @@
                         : 'text-white'
                   " target="_blank">
                      <i class="fas fa-user me-sm-1"></i>
-                     <span class="d-sm-inline d-none">{{ user }}</span>
+                     <span class="d-sm-inline d-none">{{ name }}</span>
                   </NuxtLink>
                </li>
                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -176,6 +176,13 @@ import { useNavStore } from "~~/stores/NavStore";
 import { useStore } from 'vuex'
 const navStore = useNavStore();
 const store = useStore();
+
+var name = store.getters.getEmail
+
+onMounted(() => {
+});
+
+
 
 function toggleSidenav() {
    navStore.toggleSidenavCollapsing();

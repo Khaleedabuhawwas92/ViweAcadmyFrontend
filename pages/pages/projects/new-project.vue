@@ -172,6 +172,8 @@ export default {
                               Answer4: element.Answer4,
                               Answer5: element.Answer5,
                               Answer6: element.Answer6,
+                              Answer7: element.Answer7,
+                              Answer8: element.Answer8,
                               Answer: element.Answer,
                               questiontext: element.questiontext,
                               explanation: element.explanation,
@@ -188,19 +190,11 @@ export default {
                      })
                         .catch((error) => {
                            console.log(error);
-
                         });
-
-
                   });
                });
-
-
-
                reader.readAsBinaryString(file);
             }
-
-
          });
       }
 
@@ -225,6 +219,8 @@ export default {
                   Answer4: element.Answer4.trim(),
                   Answer5: element.Answer5.trim(),
                   Answer6: element.Answer6.trim(),
+                  Answer7: element.Answer7.trim(),
+                  Answer8: element.Answer8.trim(),
                   Answer: element.Answer.trim(),
                   questiontext: element.questiontext,
                   explanation: element.explanation,

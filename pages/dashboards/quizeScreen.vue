@@ -1,6 +1,6 @@
 <template onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
    <main class="main-content position-relative max-height-vh-100 h-100 ">
-      <div class="mt-2 ">
+      <div class="mt-2">
          <nav id="navbarBlur" :class="
             navStore.navFixed
                ? `navbar navbar-main navbar-expand-lg px-0 mx-4 border-radius-xl shadow-none position-sticky left-auto top-2 z-index-sticky ${navStore.darkMode ? 'bg-default' : 'bg-white'
@@ -18,28 +18,8 @@
 
                   </div>
                   <ul class="navbar-nav">
-                     <li class="nav-item d-xl-none ps-3 d-flex">
-                        <a id="iconNavbarSidenav" href="#" class="p-0 nav-link text-white" @click.prevent="toggleSidenav">
-                           <div class="sidenav-toggler-inner">
-                              <i class="sidenav-toggler-line" :class="
-                                 navStore.navFixed && !navStore.darkMode
-                                    ? 'opacity-8 bg-dark'
-                                    : 'bg-white'
-                              "></i>
-                              <i class="sidenav-toggler-line" :class="
-                                 navStore.navFixed && !navStore.darkMode
-                                    ? 'opacity-8 bg-dark'
-                                    : 'bg-white'
-                              "></i>
-                              <i class="sidenav-toggler-line" :class="
-                                 navStore.navFixed && !navStore.darkMode
-                                    ? 'opacity-8 bg-dark'
-                                    : 'bg-white'
-                              "></i>
-                           </div>
-                        </a>
-                     </li>
-                     <li class="px-3 nav-item d-flex align-items-center">
+
+                     <li class=" nav-item d-flex align-items-center">
                         <a class="p-0 nav-link" @click="toggleShowConfig">
                            <i class="fa fa-ban cursor-pointer fixed-plugin-button-nav marked" :class="
                               navStore.darkMode || !navStore.navFixed
@@ -108,7 +88,7 @@
             </div>
          </div>
          <div class=" row">
-            <ul class="nav nav-tabs  mb-3" id="pills-tab" role="tablist">
+            <ul class="nav nav-tabs" id="pills-tab" role="tablist">
                <li v-for="(item, index) of input" :key="index" class="nav-item " role="presentation">
                   <button class="nav-link" :class="index === 0 ? 'active' : null" :id="`${item.name}-tab`"
                      data-bs-toggle="pill" :data-bs-target="`#${item.name}`" type="button" role="tab"
@@ -182,27 +162,73 @@
                                           </label>
                                        </div>
                                     </li>
+                                    <li v-if="!item.q7 == ''">
+                                       <div class="form-check ">
+                                          <input class="form-check-input" type="radio" :name="item.questiontext"
+                                             :id="item.q7" :value="item.q7">
+                                          <label class="form-check-label" :id="item.q6" :for="item.questiontext">
+                                             <strong>{{ item.q7 }}</strong>
+                                          </label>
+                                       </div>
+                                    </li>
+                                    <li v-if="!item.q8 == ''">
+                                       <div class="form-check ">
+                                          <input class="form-check-input" type="radio" :name="item.questiontext"
+                                             :id="item.q8" :value="item.q8">
+                                          <label class="form-check-label" :id="item.q8" :for="item.questiontext">
+                                             <strong>{{ item.q8 }}</strong>
+                                          </label>
+                                       </div>
+                                    </li>
                                  </ol>
                                  <div class="mt-4 button-row d-flex col-12">
-                                    <button class="mb-0 btn submit1 js-btn-prev" type="button" title="Prev"
-                                       @click="ho(item)">
+                                    <button class="mb-0 btn submit1 js-btn-prev" data-bs-toggle="modal"
+                                       :data-bs-target="`#` + item.id" :data-bs-whatever="item.id">
                                        Note For This Qusation
                                     </button>
                                     <button class="mb-0 btn submit  ms-auto" type="button" @click="showSwal(item)"
                                        title="Send">
                                        Submit
                                     </button>
-
                                  </div>
 
                               </template>
 
                            </accordion-item>
+                           <div class="modal fade" :id="item.id" tabindex="-1" aria-labelledby="exampleModalLabel"
+                              aria-hidden="true">
+                              <div class="modal-dialog">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModalLabel">New Note</h5>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                          aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <form>
+                                          <div class="mb-3">
+                                             <label for="message-text" class="col-form-label">Note:</label>
+                                             <textarea class="form-control" id="message-text" rows="15"
+                                                v-model="Note"></textarea>
+                                          </div>
+                                       </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary"
+                                          data-bs-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-primary" id="confirmButton" @click="note(item)"
+                                          data-bs-dismiss="modal">Save
+                                          Note</button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                            <div v-if="item.togeleexplanation">
                               <InfoCard title="Explanation" :description="item.explanation"
-                                 :badge="{ text: `the Corecat Ansert is : ${item.answer1}`, }" />
+                                 :badge="{ text: `the Corecat Ansert is: ${item.answer1} `, }" />
                            </div>
                         </div>
+
                      </div>
                   </div>
                </div>
@@ -240,6 +266,7 @@ export default {
       return {
          activeClass: "js-active position-relative",
          data: [],
+         id: [],
          inputhalooo: [],
          array: [],
          input: [],
@@ -250,42 +277,50 @@ export default {
          startIntariver1: 0,
          titleq: "",
          coc: "",
+         Note: "",
+
 
       };
    },
    computed: {
-      ...mapGetters(["getUserInfo"]),
-      // a computed getter
-
+      ...mapGetters(["getUserInfo", "getId"]),
    },
 
    methods: {
-
-      manegeState() {
-
-
+      saveNote() {
 
       },
+      note(res) {
 
-      
-      zoomI() {
-
-         console.log(this.getUserInfo);
-      },
-      ho(res1) {
-         var ele1 = document.getElementsByName(res1.questiontext);
-
-
-
-         for (let i = 0; i < ele1.length; i++) {
-            if (ele1[i].checked) {
-               var ele12 = ele1[i].nextElementSibling;
-
-               console.log(ele12);
-
-            }
-
+         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+         var today = new Date();
+         var data = {
+            Note: this.Note,
+            labelId: res.labelId,
+            questiontext: res.questiontext,
+            explanation: res.explanation,
+            correctAnswer: res.answer1,
+            Date: today.toLocaleString('en-GB', { timeZone: 'UTC' })
          }
+
+
+         $fetch("http://localhost:8000/api/user/note/" + this.id.id, {
+            method: 'POST',
+            body: data
+         }).then(res => {
+            this.$swal({
+               title: "Saved successfully!",
+               text: "The Notes is Saved",
+               icon: "success",
+               customClass: {
+                  confirmButton: "btn bg-gradient-success",
+               },
+               buttonsStyling: false,
+            });
+
+         })
+
+
       },
       myTimer() {
          var minutesLabel = document.getElementById("minutes");
@@ -362,22 +397,23 @@ export default {
       }
    },
    mounted() {
-
-
+      console.log(this.getId);
 
       this.startIntariver1 = 0
       this.startIntariver1 = clearTimeout(this.myTimer)
       this.startIntariver1 = setInterval(this.myTimer, 1000)
       this.navStore = useNavStore();
       this.array = JSON.parse(localStorage.getItem("authToken"));
+      this.id = JSON.parse(sessionStorage.getItem("info"));
       this.titleq = localStorage.getItem("title");
+      console.log(this.id);
       JSON.stringify(this.array)
 
       for (let index = 0; index < this.array.length; index++) {
          this.input.push({
-            labelId: "label" + (index + 1),
+            labelId: "Q" + Date.now(),
             togeleexplanation: false,
-            id: index,
+            id: "Q" + index,
             name: "Q" + (index + 1),
             questiontext: this.array[index].question[0].questiontext,
             q1: this.array[index].question[0].Answer1,
@@ -386,6 +422,8 @@ export default {
             q4: this.array[index].question[0].Answer4,
             q5: this.array[index].question[0].Answer5,
             q6: this.array[index].question[0].Answer6,
+            q7: this.array[index].question[0].Answer7,
+            q8: this.array[index].question[0].Answer8,
             answer1: this.array[index].question[0].Answer,
             explanation: this.array[index].question[0].explanation,
          })

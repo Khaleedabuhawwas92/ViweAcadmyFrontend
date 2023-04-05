@@ -275,16 +275,17 @@ export default {
       };
    },
    computed: {
-      ...mapGetters(["getUserInfo", "getMyCourses", "isAuthenticated", "getEmail"]),
+      ...mapGetters(["getUserInfo", "getMyCourses", "isAuthenticated", "getEmail", "getId"]),
    },
    mounted() {
       var x = sessionStorage.getItem("info");
-      console.log(JSON.parse(x));
+
       this.$store.dispatch("yourAction", JSON.parse(x));
 
       console.log(this.getMyCourses);
       console.log(this.isAuthenticated);
       console.log(this.getEmail);
+      console.log(this.getId);
    },
    methods: {
 

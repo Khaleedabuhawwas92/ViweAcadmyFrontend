@@ -1,623 +1,246 @@
 <template>
-    <div class="container-fluid py-4">
+   <div class="container-fluid py-4">
       <div class="d-sm-flex justify-content-between">
-        <div>
-          <ArgonButton color="white" variant="outline">New order</ArgonButton>
-        </div>
-        <div class="d-flex">
-          <div class="dropdown d-inline">
-            <ArgonButton
-              id="navbarDropdownMenuLink2"
-              color="white"
-              variant="outline"
-              class="dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Filters</ArgonButton
-            >
-            <ul
-              class="dropdown-menu dropdown-menu-lg-start px-2 py-3"
-              aria-labelledby="navbarDropdownMenuLink2"
-              style
-            >
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;"
-                  >Status: Paid</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;"
-                  >Status: Refunded</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;"
-                  >Status: Canceled</a
-                >
-              </li>
-              <li>
-                <hr class="horizontal dark my-2" />
-              </li>
-              <li>
-                <a
-                  class="dropdown-item border-radius-md text-danger"
-                  href="javascript:;"
-                  >Remove Filter</a
-                >
-              </li>
-            </ul>
-          </div>
-          <ArgonButton
-            class="btn-icon ms-2 export"
-            size
-            color="white"
-            variant="outline"
-            data-type="csv"
-          >
-            <span class="btn-inner--icon">
-              <i class="ni ni-archive-2"></i>
-            </span>
-            <span class="btn-inner--text">Export CSV</span>
-          </ArgonButton>
-        </div>
+         <div>
+            <ArgonButton color="white" variant="outline">New order</ArgonButton>
+         </div>
+         <div class="d-flex">
+            <div class="dropdown d-inline">
+               <ArgonButton id="navbarDropdownMenuLink2" color="white" variant="outline" class="dropdown-toggle"
+                  data-bs-toggle="dropdown" aria-expanded="false">Filters</ArgonButton>
+               <ul class="dropdown-menu dropdown-menu-lg-start px-2 py-3" aria-labelledby="navbarDropdownMenuLink2" style>
+                  <li>
+                     <a class="dropdown-item border-radius-md" href="javascript:;">Status: Paid</a>
+                  </li>
+                  <li>
+                     <a class="dropdown-item border-radius-md" href="javascript:;">Status: Refunded</a>
+                  </li>
+                  <li>
+                     <a class="dropdown-item border-radius-md" href="javascript:;">Status: Canceled</a>
+                  </li>
+                  <li>
+                     <hr class="horizontal dark my-2" />
+                  </li>
+                  <li>
+                     <a class="dropdown-item border-radius-md text-danger" href="javascript:;">Remove Filter</a>
+                  </li>
+               </ul>
+            </div>
+            <ArgonButton class="btn-icon ms-2 export" size color="white" variant="outline" data-type="csv">
+               <span class="btn-inner--icon">
+                  <i class="ni ni-archive-2"></i>
+               </span>
+               <span class="btn-inner--text">Export CSV</span>
+            </ArgonButton>
+         </div>
       </div>
       <div class="row">
-        <div class="col-12">
-          <div class="card mt-4">
-            <div class="table-responsive">
-              <table id="order-list" class="table table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Id</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Customer</th>
-                    <th>Product</th>
-                    <th>Revenue</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10421</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">1 Nov, 10:20 AM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonAvatar
-                          :image="img1"
-                          class="me-2"
-                          size="xs"
-                          circular
-                          alt="user image"
-                        />
-                        <span>Orlando Imieto</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Nike Sport V2</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$140,20</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10422</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">1 Nov, 10:53 AM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonAvatar
-                          :image="img2"
-                          size="xs"
-                          circular
-                          class="me-2"
-                          alt="user image"
-                        />
-                        <span>Alice Murinho</span>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">Valvet T-shirt</span>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">$42,00</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10423</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">1 Nov, 11:13 AM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="dark"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-undo" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Refunded</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xs me-2 bg-gradient-dark">
-                          <span>M</span>
-                        </div>
-                        <span>Michael Mirra</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">
-                        Leather Wallet
-                        <span class="text-secondary ms-2">+1 more</span>
-                      </span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$25,50</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10424</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">1 Nov, 12:20 PM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center">
-                          <ArgonAvatar
-                            :image="img3"
-                            size="xs"
-                            class="me-2"
-                            circular
-                            alt="user image"
-                          />
-                          <span>Andrew Nichel</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Bracelet Onu-Lino</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$19,40</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10425</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">1 Nov, 1:40 PM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="danger"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-times" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Canceled</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center">
-                          <ArgonAvatar
-                            :image="img4"
-                            size="xs"
-                            circular
-                            class="me-2"
-                            alt="user image"
-                          />
-                          <span>Sebastian Koga</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">
-                        Phone Case Pink
-                        <span class="text-secondary ms-2">x 2</span>
-                      </span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$44,90</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10426</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">1 Nov, 2:19 AM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xs me-2 bg-gradient-success">
-                          <span>L</span>
-                        </div>
-                        <span>Laur Gilbert</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Backpack Niver</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$112,50</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10427</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">1 Nov, 3:42 AM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xs me-2 bg-gradient-dark">
-                          <span>I</span>
-                        </div>
-                        <span>Iryna Innda</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Adidas Vio</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$200,00</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10428</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">2 Nov, 9:32 AM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xs me-2 bg-gradient-dark">
-                          <span>A</span>
-                        </div>
-                        <span>Arrias Liunda</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Airpods 2 Gen</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$350,00</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10429</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">2 Nov, 10:14 AM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center">
-                          <ArgonAvatar
-                            :image="img5"
-                            size="xs"
-                            circular
-                            class="me-2"
-                            alt="user image"
-                          />
-                          <span>Rugna Ilpio</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Bracelet Warret</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$15,00</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10430</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">2 Nov, 12:56 PM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="dark"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-undo" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Refunded</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center">
-                          <ArgonAvatar
-                            :image="img6"
-                            size="xs"
-                            class="me-2"
-                            alt="user image"
-                            circular
-                          />
-                          <span>Anna Landa</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">
-                        Watter Bottle India
-                        <span class="text-secondary ms-2">x 3</span>
-                      </span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$25,00</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10431</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">2 Nov, 3:12 PM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xs me-2 bg-gradient-dark">
-                          <span>K</span>
-                        </div>
-                        <span>Karl Innas</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Kitchen Gadgets</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$164,90</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <ArgonCheckbox />
-                        <p class="text-xs font-weight-bold ms-2 mb-0">#10432</p>
-                      </div>
-                    </td>
-                    <td class="font-weight-bold">
-                      <span class="my-2 text-xs">2 Nov, 5:12 PM</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <ArgonButton
-                          color="success"
-                          variant="outline"
-                          class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                        >
-                          <i class="fas fa-check" aria-hidden="true"></i>
-                        </ArgonButton>
-                        <span>Paid</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xs me-2 bg-gradient-info">
-                          <span>O</span>
-                        </div>
-                        <span>Oana Kilas</span>
-                      </div>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">Office Papers</span>
-                    </td>
-                    <td class="text-xs font-weight-bold">
-                      <span class="my-2 text-xs">$23,90</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+         <div class="col-12">
+            <div class="card mt-4">
+               <div class="table-responsive">
+                  <table id="order-list" class="table table-flush">
+                     <thead class="thead-light">
+                        <tr>
+                           <th>Question</th>
+                           <th>Answer</th>
+                           <th>Note</th>
+                           <th>Date</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr v-for="note of getNoteQuiz " :key="note">
+                           <td class="">
+                              <div class="d-flex align-items-center qustion-1">
+                                 <p class="text-xs font-weight-bold ms-2 mb-0 "><strong>{{ note.questiontext }}</strong>
+                                 </p>
+                              </div>
+                           </td>
+                           <td class="font-weight-bold  qustion-1  ">
+                              <span class="my-2 text-xs">{{ note.correctAnswer }}</span>
+                           </td>
+                           <td class="text-xs font-weight-bold">
+                              <div class="d-flex align-items-center qustion-1 ">
+                                 <ArgonButton color="success" variant="outline"
+                                    class="btn-icon-only btn-rounded mb-0 me-2 btn-sm d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-check" aria-hidden="true"></i>
+                                 </ArgonButton>
+                                 <span>{{ note.Note }}</span>
+                              </div>
+                           </td>
+                           <td class="text-xs font-weight-bold">
+                              <div class="d-flex align-items-center">
+                                 <span>{{ note.Date }}</span>
+                              </div>
+                           </td>
+                           <td class="text-xs font-weight-bold">
+                              <i class="fas fa-user-edit text-secondary  button-actions" data-bs-toggle="modal"
+                                 :data-bs-target="`#` + note.labelId" data-bs-whatever="@mdo"></i>
+                              <i class="fas fa-trash text-secondary    button-actions"
+                                 @click="deleteItem(note.labelId)"></i>
+                           </td>
+                           <div class="modal fade" :id="note.labelId" tabindex="-1" aria-labelledby="exampleModalLabel"
+                              aria-hidden="true">
+                              <div class="modal-dialog  modal-xl">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModalLabel">{{ note.questiontext }}</h5>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                          aria-label="Close"></button>
+                                    </div>
+                                    <div class="card">
+                                       <div class="card-header">
+                                          {{ note.Note }}
+                                       </div>
+                                       <div class="card-body">
+
+                                          <h5 class="card-title"> Explanation</h5>
+                                          <p class="card-text">{{ note.explanation }}</p>
+
+                                       </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary "
+                                          data-bs-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-primary" @click="editItem(data)"
+                                          data-bs-dismiss="modal">Update</button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </template>
-  
-  <script>
-  import { DataTable } from "simple-datatables";
-  import img1 from "@/assets/img/team-2.jpg";
-  import img2 from "@/assets/img/team-1.jpg";
-  import img3 from "@/assets/img/team-3.jpg";
-  import img4 from "@/assets/img/team-4.jpg";
-  import img5 from "@/assets/img/team-5.jpg";
-  import img6 from "@/assets/img/ivana-squares.jpg";
-  
-  export default {
-    name: "notes",
-    data() {
+   </div>
+</template>
+<script>
+import { mapGetters } from "vuex";
+import { DataTable } from "simple-datatables";
+import img1 from "@/assets/img/team-2.jpg";
+import img2 from "@/assets/img/team-1.jpg";
+import img3 from "@/assets/img/team-3.jpg";
+import img4 from "@/assets/img/team-4.jpg";
+import img5 from "@/assets/img/team-5.jpg";
+import img6 from "@/assets/img/ivana-squares.jpg";
+
+export default {
+   name: "notes",
+   data() {
       return {
-        img1,
-        img2,
-        img3,
-        img4,
-        img5,
-        img6,
+         img1,
+         img2,
+         img3,
+         img4,
+         img5,
+         img6,
       };
-    },
-    mounted() {
-      if (document.getElementById("order-list")) {
-        const dataTableSearch = new DataTable("#order-list", {
-          searchable: true,
-          fixedHeight: false,
-          perPageSelect: false,
-        });
-  
-        document.querySelectorAll(".export").forEach(function (el) {
-          el.addEventListener("click", function (el) {
-            const type = el.dataset.type;
-  
-            const data = {
-              type,
-              filename: "soft-ui-" + type,
-            };
-  
-            if (type === "csv") {
-              data.columnDelimiter = "|";
+   },
+   computed: {
+      ...mapGetters(["getNoteQuiz", "getId"]),
+   },
+   methods: {
+
+      deleteItem(id) {
+         this.$swal({
+            title: "Are you sure?",
+            text: "You won Delete  this Note!",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true,
+            customClass: {
+               confirmButton: "btn bg-gradient-success",
+               cancelButton: "btn bg-gradient-danger",
+            },
+            buttonsStyling: false,
+         }).then((result) => {
+            if (result.isConfirmed) {
+               $fetch("http://localhost:8000/api/user/note/" + this.getId + "/" + id, {
+                  method: 'PUT',
+
+               }).then(res => {
+                  this.$store.dispatch("SetNotes");
+                  this.$swal({
+                     title: "Saved successfully!",
+                     text: "The Notes is Deleted",
+                     icon: "success",
+                     customClass: {
+                        confirmButton: "btn bg-gradient-success",
+                     },
+                     buttonsStyling: false,
+                  });
+               })
+            } else if (
+               /* Read more about handling dismissals below */
+               result.dismiss === this.$swal.DismissReason.cancel
+            ) {
+               this.$swal({
+                  title: "Cancelled!",
+                  text: "Your imaginary file is safe :)",
+                  icon: "error",
+                  customClass: {
+                     confirmButton: "btn bg-gradient-success",
+                  },
+                  buttonsStyling: false,
+               });
             }
-  
-            dataTableSearch.export(data);
-          });
-        });
+         })
       }
-    },
-  };
-  </script>
+   },
+   mounted() {
+
+      // if (document.getElementById("order-list")) {
+      //    const dataTableSearch = new DataTable("#order-list", {
+      //       searchable: true,
+      //       fixedHeight: false,
+      //       perPageSelect: false,
+      //    });
+
+      //    document.querySelectorAll(".export").forEach(function (el) {
+      //       el.addEventListener("click", function (el) {
+      //          const type = el.dataset.type;
+
+      //          const data = {
+      //             type,
+      //             filename: "soft-ui-" + type,
+      //          };
+
+      //          if (type === "csv") {
+      //             data.columnDelimiter = "|";
+      //          }
+
+      //          dataTableSearch.export(data);
+      //       });
+      //    });
+      // }
+
+      // the sseeeion Storg is form (id ................ to send the vuex)
+      var x = sessionStorage.getItem("info");
+      this.$store.dispatch("yourAction", JSON.parse(x));
+      this.$store.dispatch("SetNotes");
+      console.log(this.getNoteQuiz);
+   },
+};
+</script>
+<style scoped>
+.qustion-1 {
+   max-width: 200px;
+
+   white-space: pre-line;
+   line-height: 1;
+
+   overflow: hidden;
+}
+
+.button-actions {
+   margin-right: 19px;
+   cursor: pointer;
+
+}
+</style>
+
   
